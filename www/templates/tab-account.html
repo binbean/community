@@ -1,17 +1,137 @@
 <ion-view view-title="Account">
   <ion-content>
   	<!-- -->
-	  <ion-item class="item-avatar item-icon-right" type="item-text-wrap" href="#/tab/account/{{account.id}}">
+     <div  ng-if="account == null" class="item item-text-wrap" style="text-align: center; padding: 10px;">
+      <!--
+      <p>您还没有登录哦～</p>
+      -->
+      <button class="button button-small button-light" ng-click="openLoginModal()">
+        &nbsp;&nbsp;&nbsp;&nbsp;马上登录&nbsp;&nbsp;&nbsp;&nbsp;
+      </button>
+    </div>
+
+	  <ion-item ng-if="account != null" class="item-avatar item-icon-right" type="item-text-wrap" href="#/tab/account/profile">
       <img ng-src="{{account.face}}">
       <h2>{{account.name}}</h2>
       <p>{{account.lastText}}</p>
       <i class="icon ion-chevron-right icon-accessory"></i>
     </ion-item>
+    <ion-item  class="item-icon-right" type="item-text-wrap" href="#" ng-click="loginRequired();">
+      <p>我的白板</p>
+      <i class="icon ion-chevron-right icon-accessory"></i>
+    </ion-item>
+    <div class="item item-divider">
+      我的小区
+    </div>
+    <ion-item  class="item-icon-right" type="item-text-wrap" href="#" ng-click="loginRequired();">
+      <p>第一小区</p>
+      <i class="icon ion-chevron-right icon-accessory"></i>
+    </ion-item>
+    <ion-item  class="item-icon-right" type="item-text-wrap" href="#" ng-click="loginRequired();">
+      <p>第二小区</p>
+      <i class="icon ion-chevron-right icon-accessory"></i>
+    </ion-item>
+
+    <!--
+    <ion-item  class="item-icon-right" type="item-text-wrap" href="#" ng-click="loginRequired();">
+      <p>我的报修</p>
+      <i class="icon ion-chevron-right icon-accessory"></i>
+    </ion-item>
+    <ion-item  class="item-icon-right" type="item-text-wrap" href="#" ng-click="loginRequired();">
+      <p>我的电话费</p>
+      <i class="icon ion-chevron-right icon-accessory"></i>
+    </ion-item>
+    <ion-item  class="item-icon-right" type="item-text-wrap" href="#" ng-click="loginRequired();">
+      <p>我的火车票</p>
+      <i class="icon ion-chevron-right icon-accessory"></i>
+    </ion-item>
+    <ion-item  class="item-icon-right" type="item-text-wrap" href="#" ng-click="loginRequired();">
+      <p>我的飞机票</p>
+      <i class="icon ion-chevron-right icon-accessory"></i>
+    </ion-item>
+
+    <ion-item  class="item-icon-right" type="item-text-wrap" href="#/tab/account/{{account.id}}">
+      <p>我的报修 <span class="item-note positive">nick</span></p>
+      <i class="icon ion-chevron-right icon-accessory"></i>
+    </ion-item>
 
     <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Enable Friends
-    </ion-toggle>
+      <ion-toggle  ng-model="settings.enableFriends">
+          Enable Friends
+      </ion-toggle>
     </ion-list>
+    -->
+
+    <button ng-if="account != null" class="button button-block button-assertive" ng-click="logout();">
+      退出当前账号
+    </button>
   </ion-content>
 </ion-view>
+
+<script id="login-modal.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar>
+      <button class="button button-clear button-positive" ng-click="closeLoginModal()">取消</button>
+       <h1 class="title">用户登录</h1>
+    </ion-header-bar>
+    <ion-content>
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">用户名</span>
+          <input type="text" placeholder="admin">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">密  码</span>
+          <input type="password" value="admin">
+        </label>
+        <label class="item item-input">
+          <button class="button button-clear button-positive" ng-click="openSignupModal()">
+            还没有账号，点我注册
+          </button>
+        </label>
+      </div>
+
+      <div class="padding">
+        <button class="button button-block button-positive" ng-click="login();">登录</button>
+      </div>
+    </ion-content>
+  </ion-modal-view>
+</script>
+
+<script id="signup-modal.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar>
+      <button class="button button-clear button-positive" ng-click="closeSignupModal()">取消</button>
+      <h1 class="title">用户注册</h1>
+    </ion-header-bar>
+    <ion-content>
+      <div class="list">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">用户名</span>
+          <input type="text" placeholder="John">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">密  码</span>
+          <input type="text" placeholder="Suhr">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">姓  名</span>
+          <input type="text" placeholder="john@suhr.com">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Email</span>
+          <input type="text" placeholder="john@suhr.com">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">门牌号</span>
+          <input type="text" placeholder="1-2-1103">
+        </label>
+
+      </div>
+
+      <div class="padding">
+        <button class="button button-block button-positive">注册</button>
+      </div>
+    </ion-content>
+  </ion-modal-view>
+</script>

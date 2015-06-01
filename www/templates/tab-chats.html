@@ -1,56 +1,130 @@
-<ion-view view-title="小区论坛" class="has-tabs-top">
+<ion-view view-title="小区白板" class="has-tabs has-tabs-top">
+  <ion-nav-buttons side="left">
+      <a class="button button-icon icon ion-person" href="#tab/chats/my">我的</a>
+  </ion-nav-buttons>
 
-  <ion-content>
-    <div class="list card" ng-repeat="chat in chats">
+  <ion-nav-buttons side="right">
+      <a class="button button-icon icon ion-ios-compose" href="#tab/chats/compose">发帖</a>
+  </ion-nav-buttons>
 
-      <div class="item item-avatar">
-        <img src="img/venkman.png">
-        <h2>{{chat.name}}</h2>
-        <p>November 05, 1955</p>
-      </div>
+  <!-- -->
+  <ion-tabs class="tabs-striped tabs-top tabs-color-positive">
+    <ion-tab title="活动信息" href="#tab/chats?t=1">
+      <ion-content style=" margin-top: 79px;">
+        <div class="list card" ng-repeat="chat in chats">
 
-      <div class="item item-body">
-        <!--
-        <img src="img/watch2.png">
-        -->
-        <p>
-          {{chat.lastText}}
-        </p>
-        <p>
-          <a href="#" class="subdued">1 Like</a>
-          <a href="#" class="subdued">5 Comments</a>
-        </p>
-      </div>
+          <div class="item item-avatar">
+            <img src="img/venkman.png">
+            <h2>{{chat.name}}</h2>
+            <p>November 05, 1955</p>
+          </div>
 
-      <div class="item tabs tabs-secondary tabs-icon-left">
-        <a class="tab-item" href="#">
-          <i class="icon ion-thumbsup"></i>
-          Like
-        </a>
-        <a class="tab-item" href="#">
-          <i class="icon ion-chatbox"></i>
-          Comment
-        </a>
-        <a class="tab-item" href="#">
-          <i class="icon ion-share"></i>
-          Share
-        </a>
-      </div>
+          <div class="item item-body">
+            <p>
+              {{chat.lastText}}
+            </p>
+            <p>
+              <a href="#" class="subdued">{{chat.likeCount}} Like</a>
+              <a href="" class="subdued">5 Comments</a>
+            </p>
+          </div>
 
-    </div>
-    <!--
-    <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
-        <img ng-src="{{chat.face}}">
-        <h2>{{chat.name}}</h2>
-        <p>{{chat.lastText}}</p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
+          <div class="item tabs tabs-secondary tabs-icon-left">
+            <a class="tab-item" href="#" ng-click="likeClick({{chat.id}});">
+              <i class="icon ion-thumbsup"></i>
+              Like
+            </a>
+            <a class="tab-item" href="#tab/chat/1">
+              <i class="icon ion-chatbox"></i>
+              Comment
+            </a>
+            <a class="tab-item" href="#">
+              <i class="icon ion-share"></i>
+              Share
+            </a>
+          </div>
 
-        <ion-option-button class="button-assertive" ng-click="remove(chat)">
-          Delete
-        </ion-option-button>
-      </ion-item>
-    </ion-list>
-    -->
-  </ion-content>
+        </div>
+      </ion-content>
+    </ion-tab>
+
+    <ion-tab title="家政服务" href="#tab/chats?t=2">
+      <ion-content style=" margin-top: 79px;">
+        <div class="list card">
+
+          <div class="item item-avatar">
+            <img src="img/watch.png">
+            <h2>家政服务</h2>
+            <p>November 05, 1955</p>
+          </div>
+
+          <div class="item item-body">
+            <p>
+              家政服务家政服务家政服务家政服务家政服务家政服务
+            </p>
+            <p>
+              <a href="#" class="subdued">2 Like</a>
+              <a href="" class="subdued">5 Comments</a>
+            </p>
+          </div>
+
+          <div class="item tabs tabs-secondary tabs-icon-left">
+            <a class="tab-item" href="#" ng-click="likeClick(1);">
+              <i class="icon ion-thumbsup"></i>
+              Like
+            </a>
+            <a class="tab-item" href="#tab/chat/1">
+              <i class="icon ion-chatbox"></i>
+              Comment
+            </a>
+            <a class="tab-item" href="#">
+              <i class="icon ion-share"></i>
+              Share
+            </a>
+          </div>
+
+        </div>
+      </ion-content>
+    </ion-tab>
+    <ion-tab title="交易信息" href="#tab/chats?t=3">
+      <ion-content style=" margin-top: 79px;">
+        <div class="list card">
+
+          <div class="item item-avatar">
+            <img src="img/watch.png">
+            <h2>二手交易</h2>
+            <p>November 05, 1955</p>
+          </div>
+
+          <div class="item item-body">
+            <p>
+              二手交易.二手交易.二手交易.二手交易.二手交易.二手交易.二手交易.二手交易.二手交易.
+            </p>
+            <p>
+              <a href="#" class="subdued">2 Like</a>
+              <a href="" class="subdued">5 Comments</a>
+            </p>
+          </div>
+
+          <div class="item tabs tabs-secondary tabs-icon-left">
+            <a class="tab-item" href="#" ng-click="likeClick(1);">
+              <i class="icon ion-thumbsup"></i>
+              Like
+            </a>
+            <a class="tab-item" href="#tab/chat/1">
+              <i class="icon ion-chatbox"></i>
+              Comment
+            </a>
+            <a class="tab-item" href="#">
+              <i class="icon ion-share"></i>
+              Share
+            </a>
+          </div>
+
+        </div>
+      </ion-content>
+    </ion-tab>
+  </ion-tabs>
+
 </ion-view>
+

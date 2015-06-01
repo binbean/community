@@ -1,0 +1,43 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view view-title="发帖">
+  <ion-content class="padding">
+    <div class="list">
+      <label class="item item-input item-select">
+        <div class="input-label">
+          板块
+        </div>
+        <select>
+          <option selected>社区活动</option>
+          <option>家政服务</option>
+          <option>二手交易</option>
+        </select>
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">标题</span>
+        <input type="text" placeholder="请填写标题">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">描述</span>
+        <textarea placeholder="请填写说明", rows="5"></textarea>
+
+      </label>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">上传照片</span>
+        <input type="text" size="20" name="upfile" id="upfile" style="border:1px dotted #ccc">
+        <button class="button button-clear icon-left ion-camera" onclick="path.click()">
+          上传照片
+        </button>
+        <input type="file" placeholder="上传照片"  id="path" style="display:none" onchange="upfile.value=this.value">
+      </label>
+    </div>
+    <div class="padding">
+      <button class="button button-block button-positive">提交</button>
+    </div>
+  </ion-content>
+</ion-view>

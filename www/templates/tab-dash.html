@@ -4,21 +4,33 @@
     </ion-nav-buttons>
     <!--
     <ion-nav-buttons side="right">
-        <button class="button button-icon icon ion-plus" ng-click="addNewRecordClick()"></button>
+        <button class="button button-clear" ng-click="openLoginModal()">登录</button>
     </ion-nav-buttons>
     -->
+
   <ion-content class="padding">
+    <!--
     <div style="line-height: 250px; background-color: rgb(255, 255, 255); border: 1px solid rgb(238, 238, 238); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; text-align: center;">
       <img src="img/watch.png" calss="icon" style="hight:200px; font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;">
 
     </div>
-    <div class="row">
-      <div class="col-33">
-        <a class="item item-menu" href="#/tab/dash/intro">
-          <img src="img/venkman.png">
-          <h2>物业介绍</h2>
-        </a>
-      </div>
+    -->
+
+    <!--  -->
+    <div >
+      <carousel interval="myInterval">
+        <slide ng-repeat="slide in slides" active="slide.active" style="padding: 0px;">
+          <img ng-src="{{slide.image}}" style="margin:auto;">
+          <div class="carousel-caption">
+            <h4>Slide {{$index}}</h4>
+            <p>{{slide.text}}</p>
+          </div>
+        </slide>
+      </carousel>
+    </div>
+
+
+    <div class="row" style="margin: 0px;">
       <div class="col-33">
         <a class="item item-menu" href="#/tab/dash/notifies">
           <img src="img/venkman.png">
@@ -26,17 +38,24 @@
         </a>
       </div>
       <div class="col-33">
-        <a class="item item-menu" href="#">
+        <a class="item item-menu" href="#/tab/dash/tel">
           <img src="img/venkman.png">
-          <h2>物业保修</h2>
+          <h2>物业电话</h2>
+        </a>
+      </div>
+      <div class="col-33">
+        <a class="item item-menu" href="#/tab/dash/fix">
+          <img src="img/venkman.png">
+          <h2>物业留言</h2>
         </a>
       </div>
     </div>
+    <!--
     <div class="row">
       <div class="col-33">
-        <a class="item item-menu" href="##/tab/dash/tel">
+        <a class="item item-menu" href="#/tab/dash/intro">
           <img src="img/venkman.png">
-          <h2>物业电话</h2>
+          <h2>物业介绍</h2>
         </a>
       </div>
       <div class="col-33">
@@ -53,6 +72,7 @@
       </div>
 
     </div>
+    -->
     <!--
     <div class="list card">
       <div class="item item-divider">Recent Updates</div>
@@ -104,10 +124,12 @@
         </a>
         <a class="item" href="#">
           <h2>测试小区2</h2>
-          <p>Back off, man. I'm a scientist.</p>
+          <p>Back off, man. Im a scientist.</p>
         </a>
 
     </div>
     </ion-content>
   </ion-modal-view>
 </script>
+
+

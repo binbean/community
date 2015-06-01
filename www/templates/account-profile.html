@@ -1,0 +1,41 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view view-title="{{account.name}}">
+  <ion-nav-buttons side="right">
+      <a class="button button-icon ion-ios-box" href="#">保存</a>
+  </ion-nav-buttons>
+  <ion-content class="padding">
+    <!--
+    <img ng-src="{{account.face}}" style="width: 64px; height: 64px">
+    <p>
+      {{account.lastText}}
+    </p>
+    -->
+    <div class="list">
+      <label class="item item-input">
+        <span class="input-label">昵称</span>
+        <input type="text" placeholder="nick">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">姓名</span>
+        <input type="text" placeholder="张三">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">地址</span>
+        <input type="text" placeholder="甘肃省兰州市城关区">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">电话</span>
+        <input type="text" placeholder="18919312106">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">门牌号</span>
+        <input type="text" placeholder="1－1-2303">
+      </label>
+    </div>
+  </ion-content>
+</ion-view>
