@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['ui.bootstrap'])
+angular.module('ec.controllers', ['ui.bootstrap'])
 
 .controller('DashCtrl', function($scope, $ionicModal, $ionicActionSheet) {
 	$scope.items = [{name:'111111', loc:'aaaaa', distance: '1.1'}, {name:'22222', loc:'bbbbb', distance: '2.2'}];
