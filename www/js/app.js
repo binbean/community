@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('ec', ['ionic', 'ec.controllers', 'ec.services'])
+angular.module('ec', ['ionic', 'ec.controllers'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -33,7 +33,8 @@ angular.module('ec', ['ionic', 'ec.controllers', 'ec.services'])
     .state('tab', {
     url: "/tab",
     abstract: true,
-    templateUrl: "templates/tabs.html"
+    templateUrl: "templates/tabs.html",
+    //controller: 'AppCtrl'
   })
 
   // Each tab has its own nav history stack:
@@ -183,3 +184,7 @@ angular.module('ec', ['ionic', 'ec.controllers', 'ec.services'])
   $urlRouterProvider.otherwise('/tab/dash');
 
 });
+
+angular.module('ec.controllers', ['ec.services', 'ui.bootstrap']);
+
+angular.module('ec.services', ['ngResource']);

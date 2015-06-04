@@ -102,34 +102,5 @@
   </ion-content>
 </ion-view>
 
-<script id="location-modal.html" type="text/ng-template">
-  <ion-modal-view>
-    <ion-header-bar>
-      <button class="button button-clear button-positive" ng-click="closeModal()">取消</button>
-      <h1 class="title">选择附近小区</h1>
-    </ion-header-bar>
-    <ion-content>
-      <div class="list list-inset">
-        <label class="item item-input">
-          <i class="icon ion-search placeholder-icon"></i>
-          <input type="text" placeholder="Search">
-        </label>
-      </div>
-      <div class="list list-inset" ng-repeat="item in items">
-
-        <a class="item" href="#" ng-click="selectedConfirm(item.name)">
-          <h2>{{item.name}}</h2>
-          <span>{{item.loc}}</span>
-          <span class="item-note">{{item.distance}}</span>
-        </a>
-        <a class="item" href="#">
-          <h2>测试小区2</h2>
-          <p>Back off, man. Im a scientist.</p>
-        </a>
-
-    </div>
-    </ion-content>
-  </ion-modal-view>
-</script>
 
 

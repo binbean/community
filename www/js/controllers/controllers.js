@@ -1,8 +1,9 @@
-angular.module('ec.controllers', ['ui.bootstrap'])
+angular.module('ec.controllers')
 
 .controller('DashCtrl', function($scope, $ionicModal, $ionicActionSheet) {
-	$scope.items = [{name:'111111', loc:'aaaaa', distance: '1.1'}, {name:'22222', loc:'bbbbb', distance: '2.2'}];
-	$ionicModal.fromTemplateUrl('location-modal.html', {
+
+  $scope.items = [{name:'111111', loc:'aaaaa', distance: '1.1'}, {name:'22222', loc:'bbbbb', distance: '2.2'}];
+  $ionicModal.fromTemplateUrl('templates/location-modal.html', {
     scope: $scope,
     animation: 'slide-in-up'
   }).then(function(modal) {
@@ -27,28 +28,6 @@ angular.module('ec.controllers', ['ui.bootstrap'])
   $scope.$on('$destroy', function() {
     $scope.modal.remove();
   });
-  // Execute action on hide modal
-  $scope.$on('modal.hidden', function() {
-    // Execute action
-  });
-  // Execute action on remove modal
-  $scope.$on('modal.removed', function() {
-    // Execute action
-  });
-
-  $scope.myInterval = 5000;
-  var slides = $scope.slides = [];
-  $scope.addSlide = function() {
-    var newWidth = 600 + slides.length + 1;
-    slides.push({
-      image: 'http://placekitten.com/' + newWidth + '/300',
-      text: ['More','Extra','Lots of','Surplus'][slides.length % 4] + ' ' +
-        ['Cats', 'Kittys', 'Felines', 'Cutes'][slides.length % 4]
-    });
-  };
-  for (var i=0; i<4; i++) {
-    $scope.addSlide();
-  }
 
   $scope.selectedLoc = '选择小区';
   $scope.selectedConfirm = function(selectedItem) {
@@ -65,7 +44,7 @@ angular.module('ec.controllers', ['ui.bootstrap'])
      cancelText: '取消',
      cancel: function() {
        // add cancel code..
-     	 hideSheet();
+       hideSheet();
      },
      buttonClicked: function(index) {
        hideSheet();
@@ -80,14 +59,29 @@ angular.module('ec.controllers', ['ui.bootstrap'])
    });
 
  };
+
+  $scope.myInterval = 5000;
+  var slides = $scope.slides = [];
+  $scope.addSlide = function() {
+    var newWidth = 600 + slides.length + 1;
+    slides.push({
+      image: 'http://placekitten.com/' + newWidth + '/300',
+      text: ['More','Extra','Lots of','Surplus'][slides.length % 4] + ' ' +
+        ['Cats', 'Kittys', 'Felines', 'Cutes'][slides.length % 4]
+    });
+  };
+  for (var i=0; i<4; i++) {
+    $scope.addSlide();
+  }
 })
 
 .controller('DashIntroCtrl', function($scope){
 
 })
 
-.controller('DashNotifiesCtrl', function($scope){
-
+.controller('DashNotifiesCtrl', function($scope, Notify, Chats){
+  Notify.all();
+  alert(Chats.all());
 })
 
 .controller('DashNotifyCtrl', function($scope){
@@ -98,10 +92,15 @@ angular.module('ec.controllers', ['ui.bootstrap'])
 
 })
 
-.controller('DashFixCtrl', function($scope){
+.controller('DashFixCtrl', function($scope, $log){
   $scope.fix = {
     title: "",
-    description: ""
+    content: ""
+  }
+  $scope.save = function(){
+    alert($scope.fix.title);
+    $log.debug('new user data:', $scope.fix);
+    //$ionicLoading.show();
   }
 
 })
@@ -139,68 +138,4 @@ angular.module('ec.controllers', ['ui.bootstrap'])
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
   $scope.chat = Chats.get($stateParams.chatId);
-})
-
-.controller('AccountCtrl', function($scope, $ionicModal) {
-
-  $ionicModal.fromTemplateUrl('login-modal.html', {
-    scope: $scope,
-    animation: 'slide-in-up'
-  }).then(function(modal) {
-    $scope.loginModal = modal;
-  });
-
-  $ionicModal.fromTemplateUrl('signup-modal.html', {
-    scope: $scope,
-    animation: 'slide-in-up'
-  }).then(function(modal) {
-    $scope.signupModal = modal;
-  });
-
-  $scope.openLoginModal = function() {
-    $scope.loginModal.show();
-  };
-  $scope.closeLoginModal = function() {
-    $scope.loginModal.hide();
-  };
-
-  $scope.openSignupModal = function() {
-    $scope.loginModal.hide();
-    $scope.signupModal.show();
-  };
-  $scope.closeSignupModal = function() {
-    $scope.signupModal.hide();
-  };
-
-  //Cleanup the modal when we're done with it!
-  $scope.$on('$destroy', function() {
-    $scope.loginModal.remove();
-    $scope.signupModal.remove();
-  });
-  $scope.account = null;
-  $scope.login = function(){
-    $scope.account = {
-      id: 0,
-      name: 'Ben Sparrow',
-      lastText: 'You on your way?You on your way?You on your way?You on your way?You on your way?',
-      face: 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png'
-    };
-    $scope.loginModal.hide();
-  }
-  $scope.logout = function(){
-    $scope.account = null;
-  }
-  $scope.loginRequired = function(){
-    if($scope.account == null){
-      $scope.loginModal.show();
-    }
-  }
-
-  $scope.settings = {
-    enableFriends: true
-  };
-})
-
-.controller('AccountProfileCtrl', function($scope, $stateParams, Chats) {
-  //$scope.account = Chats.get($stateParams.accountId);
 });

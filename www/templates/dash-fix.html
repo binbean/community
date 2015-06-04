@@ -6,6 +6,7 @@
 -->
 <ion-view view-title="物业报修">
   <ion-content class="padding">
+    <form>
     <div class="list">
       <label class="item item-input item-stacked-label">
         <span class="input-label">标题</span>
@@ -13,12 +14,13 @@
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">说明</span>
-        <textarea placeholder="请填写说明", rows="5" ng-model="fix.description"></textarea>
+        <textarea placeholder="请填写说明", rows="5" ng-model="fix.content"></textarea>
 
       </label>
     </div>
+    </form>
     <div class="padding">
-      <button class="button button-block button-positive">提交</button>
+      <button class="button button-block button-positive" ng-click="save()">提交</button>
     </div>
   </ion-content>
 </ion-view>
